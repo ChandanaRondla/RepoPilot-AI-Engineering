@@ -1,0 +1,171 @@
+{
+  "mode": "hybrid",
+  "evaluation_cases": 10,
+  "metrics": {
+    "recall_at_3": 0.4,
+    "recall_at_5": 0.4,
+    "mrr_at_5": 0.4
+  },
+  "cases": [
+    {
+      "id": "rag_01",
+      "question": "Where is Docker sandbox test execution implemented?",
+      "expected": [
+        "repopilot/sandbox.py"
+      ],
+      "retrieved": [
+        "tests/test_rag_filter.py",
+        "repopilot/test_runner.py",
+        "tests/test_sandbox_extended.py",
+        "README.md",
+        "README.md"
+      ],
+      "rank": null,
+      "query_seconds": 2.2166
+    },
+    {
+      "id": "rag_02",
+      "question": "How does the system build and query repository indexes?",
+      "expected": [
+        "repopilot/context.py"
+      ],
+      "retrieved": [
+        "README.md",
+        "README.md",
+        "repopilot/__init__.py",
+        "tests/test_incident_triage.py",
+        "pyproject.toml"
+      ],
+      "rank": null,
+      "query_seconds": 2.0922
+    },
+    {
+      "id": "rag_03",
+      "question": "Where is the incident root cause investigation workflow?",
+      "expected": [
+        "repopilot/incident_triage.py"
+      ],
+      "retrieved": [
+        "repopilot/incident_triage.py",
+        "repopilot/incident_triage.py",
+        "benchmarks/incident_triage_benchmark.py",
+        "README.md",
+        "README.md"
+      ],
+      "rank": 1,
+      "query_seconds": 2.077
+    },
+    {
+      "id": "rag_04",
+      "question": "Which module coordinates software development agents?",
+      "expected": [
+        "repopilot/sdlc_agents.py"
+      ],
+      "retrieved": [
+        "repopilot/sdlc_agents.py",
+        "PHASE2B_README.md",
+        "PHASE2_README.md",
+        "repopilot/core.py",
+        "repopilot/agents.py"
+      ],
+      "rank": 1,
+      "query_seconds": 2.107
+    },
+    {
+      "id": "rag_05",
+      "question": "Where are language model agent calls implemented?",
+      "expected": [
+        "repopilot/model_agents.py"
+      ],
+      "retrieved": [
+        "repopilot/model_agents.py",
+        "README.md",
+        "PHASE2B_README.md",
+        "repopilot/llm.py",
+        "repopilot/agents.py"
+      ],
+      "rank": 1,
+      "query_seconds": 2.103
+    },
+    {
+      "id": "rag_06",
+      "question": "How are GitHub pull requests integrated?",
+      "expected": [
+        "repopilot/github_integration.py"
+      ],
+      "retrieved": [
+        "repopilot/github_integration.py",
+        "README.md",
+        "README.md",
+        "README.md",
+        "tests/test_github_extended.py"
+      ],
+      "rank": 1,
+      "query_seconds": 2.0975
+    },
+    {
+      "id": "rag_07",
+      "question": "Where is the FastAPI application defined?",
+      "expected": [
+        "repopilot/api.py"
+      ],
+      "retrieved": [
+        "benchmarks/incident_triage_benchmark.py",
+        "PHASE2_README.md",
+        "PHASE2B_README.md",
+        "repopilot/model_agents.py",
+        "benchmarks/BENCHMARK_REPORT.md"
+      ],
+      "rank": null,
+      "query_seconds": 2.1099
+    },
+    {
+      "id": "rag_08",
+      "question": "Which module implements the command line interface?",
+      "expected": [
+        "repopilot/cli.py"
+      ],
+      "retrieved": [
+        "README.md",
+        "README.md",
+        "PHASE2_README.md",
+        "repopilot/model_agents.py",
+        "PHASE2B_README.md"
+      ],
+      "rank": null,
+      "query_seconds": 2.089
+    },
+    {
+      "id": "rag_09",
+      "question": "Where is automated test generation implemented?",
+      "expected": [
+        "repopilot/core.py"
+      ],
+      "retrieved": [
+        "README.md",
+        "README.md",
+        "benchmarks/BENCHMARK_REPORT.md",
+        "README.md",
+        "repopilot/test_runner.py"
+      ],
+      "rank": null,
+      "query_seconds": 2.2676
+    },
+    {
+      "id": "rag_10",
+      "question": "How does the system orchestrate repository review workflows?",
+      "expected": [
+        "repopilot/workflow.py"
+      ],
+      "retrieved": [
+        "README.md",
+        "PHASE2_README.md",
+        "README.md",
+        "README.md",
+        "repopilot/__init__.py"
+      ],
+      "rank": null,
+      "query_seconds": 2.0901
+    }
+  ]
+}

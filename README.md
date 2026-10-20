@@ -176,3 +176,8 @@ for grounded LLM prompts. The index endpoint is intended for **trusted local
 use only**: do not expose arbitrary filesystem paths to untrusted callers.
 This release does not yet implement an LLM answer generator, authentication,
 production deployment, or multi-agent orchestration over this index.
+
+
+## Engineering evaluation and architecture
+
+See [ENGINEERING_REPORT.md](ENGINEERING_REPORT.md) for architecture, benchmark results, testing, incident-analysis safeguards, and limitations.

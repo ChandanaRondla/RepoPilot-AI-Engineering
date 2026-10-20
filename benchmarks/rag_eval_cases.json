@@ -1,0 +1,52 @@
+[
+  {
+    "id": "rag_01",
+    "question": "Where is Docker sandbox test execution implemented?",
+    "relevant_files": ["repopilot/sandbox.py"]
+  },
+  {
+    "id": "rag_02",
+    "question": "How does the system build and query repository indexes?",
+    "relevant_files": ["repopilot/context.py"]
+  },
+  {
+    "id": "rag_03",
+    "question": "Where is the incident root cause investigation workflow?",
+    "relevant_files": ["repopilot/incident_triage.py"]
+  },
+  {
+    "id": "rag_04",
+    "question": "Which module coordinates software development agents?",
+    "relevant_files": ["repopilot/sdlc_agents.py"]
+  },
+  {
+    "id": "rag_05",
+    "question": "Where are language model agent calls implemented?",
+    "relevant_files": ["repopilot/model_agents.py"]
+  },
+  {
+    "id": "rag_06",
+    "question": "How are GitHub pull requests integrated?",
+    "relevant_files": ["repopilot/github_integration.py"]
+  },
+  {
+    "id": "rag_07",
+    "question": "Where is the FastAPI application defined?",
+    "relevant_files": ["repopilot/api.py"]
+  },
+  {
+    "id": "rag_08",
+    "question": "Which module implements the command line interface?",
+    "relevant_files": ["repopilot/cli.py"]
+  },
+  {
+    "id": "rag_09",
+    "question": "Where is automated test generation implemented?",
+    "relevant_files": ["repopilot/core.py"]
+  },
+  {
+    "id": "rag_10",
+    "question": "How does the system orchestrate repository review workflows?",
+    "relevant_files": ["repopilot/workflow.py"]
+  }
+]

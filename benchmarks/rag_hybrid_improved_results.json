@@ -1,0 +1,171 @@
+{
+  "mode": "hybrid_implementation_aware",
+  "evaluation_cases": 10,
+  "metrics": {
+    "recall_at_3": 0.6,
+    "recall_at_5": 0.7,
+    "mrr_at_5": 0.4533
+  },
+  "cases": [
+    {
+      "id": "rag_01",
+      "question": "Where is Docker sandbox test execution implemented?",
+      "expected": [
+        "repopilot/sandbox.py"
+      ],
+      "retrieved": [
+        "repopilot/test_runner.py",
+        "repopilot/sandbox.py",
+        "tests/test_sandbox_extended.py",
+        "tests/test_rag_filter.py",
+        "tests/test_incident_llm.py"
+      ],
+      "rank": 2,
+      "query_seconds": 2.0387
+    },
+    {
+      "id": "rag_02",
+      "question": "How does the system build and query repository indexes?",
+      "expected": [
+        "repopilot/context.py"
+      ],
+      "retrieved": [
+        "README.md",
+        "repopilot/model_agents.py",
+        "tests/test_context.py",
+        "repopilot/sdlc_agents.py",
+        "repopilot/__init__.py"
+      ],
+      "rank": null,
+      "query_seconds": 2.0801
+    },
+    {
+      "id": "rag_03",
+      "question": "Where is the incident root cause investigation workflow?",
+      "expected": [
+        "repopilot/incident_triage.py"
+      ],
+      "retrieved": [
+        "repopilot/incident_llm.py",
+        "repopilot/incident_triage.py",
+        "repopilot/core.py",
+        "repopilot/workflow.py",
+        "repopilot/sdlc_agents.py"
+      ],
+      "rank": 2,
+      "query_seconds": 2.1095
+    },
+    {
+      "id": "rag_04",
+      "question": "Which module coordinates software development agents?",
+      "expected": [
+        "repopilot/sdlc_agents.py"
+      ],
+      "retrieved": [
+        "repopilot/sdlc_agents.py",
+        "repopilot/agents.py",
+        "repopilot/incident_llm.py",
+        "repopilot/test_runner.py",
+        "repopilot/core.py"
+      ],
+      "rank": 1,
+      "query_seconds": 2.0561
+    },
+    {
+      "id": "rag_05",
+      "question": "Where are language model agent calls implemented?",
+      "expected": [
+        "repopilot/model_agents.py"
+      ],
+      "retrieved": [
+        "repopilot/llm.py",
+        "repopilot/sdlc_agents.py",
+        "repopilot/model_agents.py",
+        "repopilot/context.py",
+        "repopilot/agents.py"
+      ],
+      "rank": 3,
+      "query_seconds": 2.1174
+    },
+    {
+      "id": "rag_06",
+      "question": "How are GitHub pull requests integrated?",
+      "expected": [
+        "repopilot/github_integration.py"
+      ],
+      "retrieved": [
+        "repopilot/github_integration.py",
+        "README.md",
+        "tests/test_github_extended.py",
+        "repopilot/model_agents.py",
+        "repopilot/sdlc_agents.py"
+      ],
+      "rank": 1,
+      "query_seconds": 2.4882
+    },
+    {
+      "id": "rag_07",
+      "question": "Where is the FastAPI application defined?",
+      "expected": [
+        "repopilot/api.py"
+      ],
+      "retrieved": [
+        "repopilot/api.py",
+        "repopilot/model_agents.py",
+        "repopilot/test_runner.py",
+        "repopilot/workflow.py",
+        "repopilot/llm.py"
+      ],
+      "rank": 1,
+      "query_seconds": 2.0862
+    },
+    {
+      "id": "rag_08",
+      "question": "Which module implements the command line interface?",
+      "expected": [
+        "repopilot/cli.py"
+      ],
+      "retrieved": [
+        "repopilot/model_agents.py",
+        "repopilot/sdlc_agents.py",
+        "repopilot/test_runner.py",
+        "repopilot/workflow.py",
+        "repopilot/cli.py"
+      ],
+      "rank": 5,
+      "query_seconds": 2.1045
+    },
+    {
+      "id": "rag_09",
+      "question": "Where is automated test generation implemented?",
+      "expected": [
+        "repopilot/core.py"
+      ],
+      "retrieved": [
+        "repopilot/test_runner.py",
+        "repopilot/github_integration.py",
+        "repopilot/cli.py",
+        "repopilot/context.py",
+        "repopilot/model_agents.py"
+      ],
+      "rank": null,
+      "query_seconds": 2.1168
+    },
+    {
+      "id": "rag_10",
+      "question": "How does the system orchestrate repository review workflows?",
+      "expected": [
+        "repopilot/workflow.py"
+      ],
+      "retrieved": [
+        "README.md",
+        "PHASE2_README.md",
+        "repopilot/sdlc_agents.py",
+        "repopilot/model_agents.py",
+        "repopilot/__init__.py"
+      ],
+      "rank": null,
+      "query_seconds": 2.081
+    }
+  ]
+}

@@ -23,3 +23,6 @@ benchmarks/incident_triage_results.json
 # Local credentials
 *.p12
 *.pfx
+
+# Local backup files
+*.backup

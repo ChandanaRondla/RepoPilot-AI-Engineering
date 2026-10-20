@@ -33,7 +33,18 @@ def safe_files(root: Path) -> list[Path]:
         raise ValueError('Repository root must be an existing directory')
     found = []
     for path in root.rglob('*'):
-        if any(p in IGNORED for p in path.relative_to(root).parts):
+        relative = path.relative_to(root)
+
+        if any(
+            part.startswith(".") or part in IGNORED
+            for part in relative.parts
+        ):
+            continue
+
+        if relative.suffix.lower() == ".json":
+            continue
+
+        if relative.parts[0] == "benchmarks":
             continue
         if path.is_symlink() or not path.is_file() or path.suffix.lower() not in ALLOWED:
             continue
@@ -43,16 +54,73 @@ def safe_files(root: Path) -> list[Path]:
     return sorted(found)
 
 
-def chunks(root: Path) -> list[dict[str, Any]]:
-    results = []
-    for path in safe_files(root):
-        lines = path.read_text(encoding='utf-8', errors='replace').splitlines()
-        for start in range(0, len(lines), 60):
-            content = '\n'.join(lines[start:start+60])
-            if content.strip():
-                results.append({'path': str(path.relative_to(root)), 'start_line': start+1, 'end_line': min(start+60, len(lines)), 'content': content})
-    return results
 
+def chunks(root: Path) -> list[dict[str, Any]]:
+    """Build code-aware repository chunks with source provenance."""
+    root = root.resolve()
+    results = []
+
+    for path in safe_files(root):
+        relative_path = str(path.relative_to(root))
+        lines = path.read_text(
+            encoding="utf-8", errors="replace"
+        ).splitlines()
+
+        spans = []
+
+        if path.suffix.lower() == ".py":
+            try:
+                tree = ast.parse("\n".join(lines))
+                for node in tree.body:
+                    if isinstance(
+                        node,
+                        (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef),
+                    ):
+                        first = min(
+                            [node.lineno]
+                            + [
+                                decorator.lineno
+                                for decorator in node.decorator_list
+                            ]
+                        )
+                        spans.append(
+                            (first - 1, node.end_lineno)
+                        )
+            except (SyntaxError, ValueError):
+                pass
+
+        covered = set()
+
+        for first, last in spans:
+            content = "\n".join(lines[first:last])
+            if content.strip():
+                results.append({
+                    "path": relative_path,
+                    "start_line": first + 1,
+                    "end_line": last,
+                    "content": content,
+                })
+                covered.update(range(first, last))
+
+        # Preserve module-level imports, constants, and other code.
+        for start in range(0, len(lines), 60):
+            end = min(start + 60, len(lines))
+            remaining = [
+                lines[i] if i not in covered else ""
+                for i in range(start, end)
+            ]
+
+            content = "\n".join(remaining)
+
+            if content.strip():
+                results.append({
+                    "path": relative_path,
+                    "start_line": start + 1,
+                    "end_line": end,
+                    "content": content,
+                })
+
+    return results
 
 def retrieve(root: Path, question: str, limit: int = 5) -> list[dict[str, Any]]:
     """Transparent lexical ranking; no unsupported semantic-retrieval claims."""
