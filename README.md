@@ -142,3 +142,37 @@ security guarantees, real-world review precision, or engineering time savings.
 - **85 local pytest tests passed**, including input validation, orchestration failure handling, and GitHub dry-run behavior.
 
 The benchmark is synthetic and should not be represented as real-world PR detection accuracy.
+
+## Versioned repository context (RepoPilot 2.0 — Phase 1)
+
+The original `/search` endpoint remains available. A new context layer supports
+content-addressed repository snapshots, file/line provenance, and optional
+embedding-based semantic search using SentenceTransformers + FAISS.
+
+Install the API and (optionally) semantic retrieval dependencies:
+
+```bash
+pip install -e '.[api,test]'
+# For embeddings and FAISS (downloads a model on first use):
+pip install -e '.[rag]'
+uvicorn repopilot.api:app --reload
+```
+
+Index a trusted local repository using `POST /context/index`:
+
+```json
+{"repo":"/absolute/path/to/repo", "index_dir":"/absolute/path/to/indexes", "semantic":false}
+```
+
+The response contains a `snapshot` identifier. Set `semantic` to `true` to
+build a FAISS vector index. Search it with `POST /context/query`:
+
+```json
+{"index_dir":"/absolute/path/to/indexes", "snapshot":"<snapshot from index response>", "question":"Where are retries handled?", "limit":5}
+```
+
+Each hit includes its source file, line range, score, and a citation suitable
+for grounded LLM prompts. The index endpoint is intended for **trusted local
+use only**: do not expose arbitrary filesystem paths to untrusted callers.
+This release does not yet implement an LLM answer generator, authentication,
+production deployment, or multi-agent orchestration over this index.

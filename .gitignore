@@ -13,3 +13,13 @@ build/
 !.env.example
 *.pem
 *.key
+
+# Generated repository indexes and local reports
+.repopilot-context/
+repopilot-live-workflow-report.json
+repopilot-incident-report.json
+benchmarks/incident_triage_results.json
+
+# Local credentials
+*.p12
+*.pfx
