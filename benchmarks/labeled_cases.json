@@ -1,0 +1,5 @@
+[
+  {"diff":"+++ b/app.py\n@@ -0,0 +1 @@\n+eval(user_input)\n", "expected_rules":["unsafe-eval"]},
+  {"diff":"+++ b/app.py\n@@ -0,0 +1 @@\n+value = 3\n", "expected_rules":[]},
+  {"diff":"+++ b/app.py\n@@ -0,0 +1 @@\n+print(1)\n", "expected_rules":["debug-print"]}
+]

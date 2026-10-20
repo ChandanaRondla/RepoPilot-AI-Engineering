@@ -1,0 +1,66 @@
+{
+  "benchmark": "RepoPilot deterministic rules on generated synthetic diffs",
+  "seed": 42,
+  "cases": 400,
+  "note": "Synthetic labeled patches, not real-world GitHub PRs. Rule-level matching; no live LLM API.",
+  "overall": {
+    "tp": 300,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0
+  },
+  "by_rule": {
+    "hardcoded-secret": {
+      "tp": 60,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "unsafe-eval": {
+      "tp": 60,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "shell-execution": {
+      "tp": 60,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "unbounded-except": {
+      "tp": 60,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "debug-print": {
+      "tp": 60,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  },
+  "latency_ms": {
+    "mean": 0.2135,
+    "median": 0.1599,
+    "p95": 0.5101,
+    "max": 1.1316
+  },
+  "test_proposals": {
+    "files": 134,
+    "syntax_valid": 134,
+    "with_real_assertions": 0,
+    "note": "Proposed tests intentionally contain pytest.skip; syntax validity is not functional test success."
+  },
+  "time_savings": {
+    "measured": false,
+    "note": "No paired human-review baseline was conducted; time saved cannot be responsibly quantified."
+  }
+}

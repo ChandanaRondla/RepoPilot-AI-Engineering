@@ -1,0 +1,55 @@
+{
+  "changed_files": [
+    "calculator.py"
+  ],
+  "findings": [
+    {
+      "severity": "low",
+      "rule": "debug-print",
+      "path": "calculator.py",
+      "line": 2,
+      "message": "Debug print added to application code",
+      "suggestion": "Use structured logging where appropriate",
+      "source": "deterministic"
+    },
+    {
+      "severity": "high",
+      "rule": "hardcoded-secret",
+      "path": "calculator.py",
+      "line": 4,
+      "message": "Potential hardcoded credential",
+      "suggestion": "Load secrets from an approved secret manager or environment",
+      "source": "deterministic"
+    }
+  ],
+  "test_proposals": [
+    {
+      "source_path": "calculator.py",
+      "function": "calculate_total",
+      "suggested_file": "tests/test_calculator_calculate_total.py",
+      "content": "\"\"\"Review and complete these test cases before merging.\"\"\"\nimport pytest\nfrom calculator import calculate_total\n\n\ndef test_calculate_total_happy_path():\n    # TODO: supply valid inputs and assert expected behavior\n    pytest.skip(\"Requires domain-specific expected output\")\n\ndef test_calculate_total_invalid_input():\n    # TODO: assert a documented exception or validation result\n    pytest.skip(\"Requires domain-specific invalid-input contract\")\n"
+    }
+  ],
+  "context": [
+    {
+      "path": "sample_report.json",
+      "start_line": 1,
+      "end_line": 48,
+      "content": "{\n  \"changed_files\": [\n    \"calculator.py\"\n  ],\n  \"findings\": [\n    {\n      \"severity\": \"low\",\n      \"rule\": \"debug-print\",\n      \"path\": \"calculator.py\",\n      \"line\": 2,\n      \"message\": \"Debug print added to application code\",\n      \"suggestion\": \"Use structured logging where appropriate\",\n      \"source\": \"deterministic\"\n    },\n    {\n      \"severity\": \"high\",\n      \"rule\": \"hardcoded-secret\",\n      \"path\": \"calculator.py\",\n      \"line\": 4,\n      \"message\": \"Potential hardcoded credential\",\n      \"suggestion\": \"Load secrets from an approved secret manager or environment\",\n      \"source\": \"deterministic\"\n    }\n  ],\n  \"test_proposals\": [\n    {\n      \"source_path\": \"calculator.py\",\n      \"function\": \"calculate_total\",\n      \"suggested_file\": \"tests/test_calculator_calculate_total.py\",\n      \"content\": \"\\\"\\\"\\\"Review and complete these test cases before merging.\\\"\\\"\\\"\\nimport pytest\\nfrom calculator import calculate_total\\n\\n\\ndef test_calculate_total_happy_path():\\n    # TODO: supply valid inputs and assert expected behavior\\n    pytest.skip(\\\"Requires domain-specific expected output\\\")\\n\\ndef test_calculate_total_invalid_input():\\n    # TODO: assert a documented exception or validation result\\n    pytest.skip(\\\"Requires domain-specific invalid-input contract\\\")\\n\"\n    }\n  ],\n  \"context\": [\n    {\n      \"path\": \"calculator.py\",\n      \"start_line\": 1,\n      \"end_line\": 2,\n      \"content\": \"def calculate_total(items):\\n    return sum(items)\",\n      \"score\": 4\n    }\n  ],\n  \"summary\": {\n    \"changed_files\": 1,\n    \"findings\": 2,\n    \"proposed_test_files\": 1\n  },\n  \"disclaimer\": \"Static heuristics are advisory; generated tests are skipped until a developer supplies assertions.\"\n}",
+      "score": 5
+    },
+    {
+      "path": "calculator.py",
+      "start_line": 1,
+      "end_line": 2,
+      "content": "def calculate_total(items):\n    return sum(items)",
+      "score": 4
+    }
+  ],
+  "summary": {
+    "changed_files": 1,
+    "findings": 2,
+    "proposed_test_files": 1
+  },
+  "disclaimer": "Static heuristics are advisory; generated tests are skipped until a developer supplies assertions."
+}

@@ -1,0 +1,8 @@
+diff --git a/calculator.py b/calculator.py
+--- a/calculator.py
++++ b/calculator.py
+@@ -0,0 +1,4 @@
++def calculate_total(items):
++    print(items)
++    return sum(items)
++password = "example_secret_123"
